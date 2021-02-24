@@ -1,0 +1,16 @@
+node_modules/
+*.iml
+.idea/
+.vscode/
+*~
+~*
+*.diff
+*.log
+*.patch
+*.bak
+.DS_Store
+Thumbs.db
+.project
+.*proj
+.svn/
+*.swp
