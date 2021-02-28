@@ -7,10 +7,10 @@ const webpackBar = require('webpackbar');
 
 const baseConfig = {
   entry: {
-    'draggable-category': path.resolve('index'),
+    'logic-graph': path.resolve('/src/index'),
   },
   module: {
-    loaders: [{}, {}, {}]
+    // loaders: [{}, {}, {}]
   },
   externals: {
     // '': ''
@@ -28,10 +28,19 @@ let webpackConfig;
 
 if (process.env.NODE_ENV === 'serve') {
   webpackConfig = merge({
+    devtool: 'eval-cheap-module-source-map',
+    output: {
+      filename: './public/[name].js',
+      sourceMapFilename: '[file].map',
+    },
+    devServer: {
+      host: '127.0.0.1',
+      port: '8080',
+    },
     plugins: [
-      new webpackBar({ name: 'Building...' }),
-      new BundleAnalyzerPlugin({ port: 8888 }),
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+      new webpackBar({ name: 'Logic-Graph' }),
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      // new BundleAnalyzerPlugin({ port: 8888 })
     ]
   })
 } else if (process.env.NODE_ENV === 'development') {

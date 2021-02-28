@@ -1,8 +1,8 @@
 {
-  "name": "draggable-category",
+  "name": "logic-graph",
   "version": "0.0.1",
   "description": "low-code platform",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf package-lock.json && npm install",
     "start": "cross-env NODE_ENV=serve webpack-dev-server",
@@ -16,8 +16,13 @@
   "author": "edsyang",
   "license": "ISC",
   "dependencies": {
-    "@antv/g6": "^4.1.12",
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.8",
+    "@babel/preset-react": "^7.12.13",
+    "@babel/runtime": "^7.13.8",
     "antd": "^4.12.3",
+    "graphql": "^15.5.0",
+    "i18next": "^19.8.9",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
@@ -27,6 +32,11 @@
     "@antv/g6": "^4.1.12"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.13.8",
+    "@types/node": "^14.14.31",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
+    "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.3",
     "eslint": "^7.20.0",
     "eslint-config-airbnb": "^18.2.1",

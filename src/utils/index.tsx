@@ -24,3 +24,7 @@ const useFetch = (global: boolean) => {
 
   return { data, loading, fetchData };
 }
+
+module.exports = {
+  useFetch
+}
