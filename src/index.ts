@@ -1,12 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-const container = document.createElement("div");
+const container: HTMLDivElement = document.createElement('div');
 document.body.appendChild(container);
-container.id = "logic-graph";
+container.id = 'logic-graph';
 
-const initGraph = (): void => {
-  // return ReactDOM.render(React.createElement("logic-ui"), container);
+
+const initGraph = () => {
+  return ReactDOM.render(React.createElement('div', {}), container);
 }
 
 initGraph();
