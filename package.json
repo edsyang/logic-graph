@@ -1,19 +1,21 @@
 {
   "name": "logic-graph",
+  "author": "edsyang",
   "version": "0.0.1",
   "description": "low-code platform",
-  "main": "index.tsx",
+  "main": "build/logic-graph.js",
   "scripts": {
-    "clean": "rm -rf node_modules && rm -rf package-lock.json && npm install",
     "start": "cross-env NODE_ENV=serve webpack serve --mode development",
     "build": "cross-env npm run build:umd && npm run build:umd:min",
-    "build:umd": "cross-env NODE_ENV=development webpack --mode production",
-    "build:umd:min": "cross-env NODE_ENV=production webpack --mode production"
+    "build:umd": "cross-env NODE_ENV=development webpack --mode development",
+    "build:umd:min": "cross-env NODE_ENV=production webpack --mode production",
+    "test": "jest --coverage --passWithNoTests"
   },
-  "keywords": [
-    "low-code"
-  ],
-  "author": "edsyang",
+  "keywords": ["low-code", "BPMN"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edsyang/logic-graph.git"
+  },
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.13.8",

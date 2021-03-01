@@ -2,8 +2,9 @@
   "presets": [
     [
       "@babel/preset-env", {
-        "target": { 
-          "browsers": ["chrome >= 50"] 
+        "targets": { 
+          "browsers": ["chrome >= 50"],
+          "node": "current"
         },
         "modules": false
       }

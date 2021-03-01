@@ -5,9 +5,13 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
 const webpackBar = require('webpackbar');
 
+const merge = (config) => {
+  return Object.assign({}, baseConfig, config);
+}
+
 const baseConfig = {
   entry: {
-    'logic-graph': path.resolve(__dirname, './src/index'),
+    'logic-graph': './src/index',
   },
   module: {
     rules: [
@@ -19,12 +23,8 @@ const baseConfig = {
   externals: {
     // '': ''
   },
-  devtool: 'none',
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.less', '.css']
-  },
-  node: {
-    // process: false
   }
 }
 
@@ -34,8 +34,9 @@ if (process.env.NODE_ENV === 'serve') {
   webpackConfig = merge({
     devtool: 'eval-cheap-module-source-map',
     output: {
-      filename: './public/[name].js',
-      sourceMapFilename: '[file].map',
+      path: __dirname + './public',
+      filename: '[name].js',
+      sourceMapFilename: '[file].map'
     },
     devServer: {
       contentBase: '.',
@@ -43,7 +44,7 @@ if (process.env.NODE_ENV === 'serve') {
       inline: true,
       open: true,
       host: '127.0.0.1',
-      port: '8080',
+      port: '8082'
     },
     plugins: [
       new webpack.DefinePlugin({
@@ -54,25 +55,44 @@ if (process.env.NODE_ENV === 'serve') {
       }),
       new webpackBar({ name: 'Logic-Graph' }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-      new BundleAnalyzerPlugin({ port: 8888 })
+      // new BundleAnalyzerPlugin({ analyzerPort: 9999 })
     ]
   })
 } else if (process.env.NODE_ENV === 'development') {
   webpackConfig = merge({
     devtool: 'source-map',
     output: {
-      filename: './build/[name].js',
+      path: __dirname + '/build',
+      filename: '[name].js',
       sourceMapFilename: '[file].map'
     },
+    plugins: [
+      new webpack.DefinePlugin({
+        VERSION: JSON.stringify(packageInfo.version),
+        MOCK: 'false',
+        process: 'false',
+        'process.env.NODE_ENV': '"production"',
+      }),
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    ]
   })
 } else {
   webpackConfig = merge({
-    
+    devtool: 'source-map',
+    output: {
+      path: __dirname + '/build',
+      filename: '[name].min.js'
+    },
+    plugins: [
+      new webpack.DefinePlugin({
+        VERSION: JSON.stringify(packageInfo.version),
+        MOCK: 'false',
+        process: JSON.stringify('false'),
+        'process.env.NODE_ENV': '"production"',
+      }),
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    ]
   })
-}
-
-function merge(config) {
-  return Object.assign({}, baseConfig, config);
 }
 
 module.exports = webpackConfig;
