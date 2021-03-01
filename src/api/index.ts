@@ -20,6 +20,4 @@ axios.interceptors.request.use((config: any) => {
 axios.interceptors.response.use((config: any) => {
   console.log(prefix);
   return config;
-}, (error: any) => {
-  message.error(`Error: ${error}`);
-});
+}, (error: any) => {});
