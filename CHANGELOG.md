@@ -13,3 +13,11 @@ update configurations
 ### 2021.3.1
 
 update webpack & .babelrc & icon & jest config
+
+### 2021.3.2
+
+fix some config's issues
+
+### 2021.3.3
+
+init project basic-ui
