@@ -25,6 +25,7 @@
     "new-parens": "off",
     "import/no-unresolved": "off",
     "import/no-extraneous-dependencies": "off",
+    "import/extensions": "off",
     "react/prefer-stateless-function": "off",
     "react/jsx-first-prop-new-line": "off",
     "react/no-multi-comp": "off",
