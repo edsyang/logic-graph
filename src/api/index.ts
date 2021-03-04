@@ -1,9 +1,7 @@
-import * as antd from 'antd';
+import { message } from 'antd';
 import i18next from 'i18next';
 
 const axios = require('axios');
-
-const { message } = antd;
 
 // 请求前缀
 const prefix: string = (window.pageConfig || {}).prefix || '';

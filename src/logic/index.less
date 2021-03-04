@@ -1,0 +1,143 @@
+@import '~antd/dist/antd.css';
+
+@text-color: rgba(0, 0, 0, .6);
+@border-color: rgba(31, 56, 88, .1);
+
+body, html, #logic-graph {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  -webkit-user-drag: none;
+  -webkit-text-size-adjust: none;
+  -webkit-touch-callout: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  min-width: 1024px;
+  min-height: 480px;
+}
+
+body {
+  background-size: cover;
+  --color-field-border: rgba(31, 56, 88, 0.30);
+  --color-text: @text-color;
+  --color-pane-background: #fff;
+  --color-block-background-disabled: rgba(31, 56, 88, 0.04);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, .3);
+  border-radius: 5px;
+}
+
+// header-pane
+.logic-ui-header-pane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  z-index: 999;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid @border-color;
+  padding: 0 20px;
+
+  .header-pane-wapper {
+    display: flex;
+
+    .header-pane-left {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 1;
+      height: 48px;
+    }
+    
+    .header-pane-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+  }
+}
+
+// components-pane
+.logic-ui-components-pane {
+  position: relative;
+  // height: 100%;
+  height: 100vh;
+  padding-bottom: 60px;
+  border-right: 1px solid @border-color;
+  
+  width: 240px;
+  background-color: #fff;
+  z-index: 99;
+}
+.logic-ui-components-pane-content {
+  position: absolute;
+  // top: 0;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+// tools-pane
+.logic-ui-tools-pane {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  top: 48px;
+  left: 240px;
+  right: 280px;
+  height: 36px;
+  padding: 10px 10px;
+  background-color: #fff;
+  border-bottom: 1px solid @border-color;
+
+  z-index: 9;
+}
+
+// canvas-pane
+.logic-ui-canvas-pane {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  right: 280px;
+  bottom: 0;
+  background-color: rgba(31, 56, 88, .04);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+// settings-pane
+.logic-ui-settings-pane {
+  position: absolute;
+  box-sizing: border-box;
+  font-size: 14px !important;
+  color: @text-color;
+  width: 280px;
+  top: 48px;
+  right: 0;
+  bottom: 0;
+  border-left: 1px solid @border-color;
+}
