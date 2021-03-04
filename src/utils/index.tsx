@@ -1,12 +1,15 @@
+import { useState, useEffect } from 'react';
+import { CustorState } from './interface';
+
 const useFetch = (global: boolean) => {
   // const appCode = global ? (window as any).pageConfig.configInfo.globalAppId : getUrlParam('appCode');
   const initialData = {
     data: [] as object[],
   };
-  const [data, setData] = React.useState(initialData);
-  const [loading, setLoading] = React.useState(false);
+  const [data, setData] = useState(initialData);
+  const [loading, setLoading] = useState(false);
 
-  const fetchData = async (reset = false, keyword: any = null) => {
+  const fetchData = async (reset: boolean = false, keyword: any = null) => {
     setLoading(true);
 
     // const res: any = await getApiList(keyword);
@@ -18,13 +21,40 @@ const useFetch = (global: boolean) => {
     setLoading(false);
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchData(true);
   }, [global]);
 
   return { data, loading, fetchData };
 }
 
-module.exports = {
-  useFetch
+const initMouseDate: CustorState = {
+  screenX: NaN,
+  screenY: NaN,
+  clientX: NaN,
+  clientY: NaN,
+  pageX: NaN,
+  pageY: NaN
+}
+
+const useMouse = () => {
+  const [mouseDate, setMouseDate] = useState(initMouseDate);
+
+  useEffect(() => {
+    const moveHandler = (e: MouseEvent) => {
+      const { screenX, screenY, clientX, clientY, pageX, pageY } = e;
+      setMouseDate({ screenX, screenY, clientX, clientY, pageX, pageY })
+    }
+    document.addEventListener('mousemove', moveHandler);
+    return () => {
+      document.removeEventListener('mousemove', moveHandler);
+    }
+  }, []);
+
+  return mouseDate;
+}
+
+export {
+  useFetch,
+  useMouse
 }
