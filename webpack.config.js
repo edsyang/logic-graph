@@ -15,13 +15,14 @@ const baseConfig = {
   },
   module: {
     rules: [
-      { test: /\.ts$/, use: 'ts-loader' }, 
-      { test: /\.less$/, use: ['style!css!less'] }, 
-      { test: /\.css$/, use: ['style!css'] }
+      { test: /\.(js|jsx)$/, use: ['babel-loader'] },
+      { test: /\.(ts|tsx)$/, use: ['babel-loader', 'ts-loader'] }, 
+      { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] }, 
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] }
     ]
   },
   externals: {
-    // '': ''
+    '@antv/g6': 'var window.G6'
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.less', '.css']
