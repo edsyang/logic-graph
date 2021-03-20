@@ -83,19 +83,80 @@ body {
   padding-bottom: 60px;
   border-right: 1px solid @border-color;
   
-  width: 240px;
+  width: 250px;
   background-color: #fff;
   z-index: 99;
 }
 .logic-ui-components-pane-content {
   position: absolute;
-  // top: 0;
   top: 50px;
   bottom: 0;
   left: 0;
   right: 0;
   overflow-x: hidden;
   overflow-y: auto;
+
+  .component-list-wrap {
+    height: 100%;
+    padding-bottom: 60px;
+    position: relative;
+    border-right: 1px solid rgba(31, 56, 88, .1);
+
+    .component-list-group {
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      .component-list-items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        width: 80px;
+        height: 80px;
+        overflow: hidden;
+        cursor: pointer;
+        user-select: none;
+        .component-list-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          .component-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            box-shadow: 0 1px 3px 0 rgba(31, 56, 88, 0.15);
+            border: 1px solid rgba(31, 56, 88, 0.20);
+            border-radius: 3px;
+            &:hover {
+              box-shadow: 0 2px 10px 0 rgba(31, 56, 88, 0.2);
+            }
+            .iconfont {
+              font-size: 28px;
+            }
+          }
+          .component-name {
+            width: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 8px;
+            color: var(--color-text, @text-color);
+            font-size: 12px;
+            .component-name-detail {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 // tools-pane
@@ -104,7 +165,7 @@ body {
   display: flex;
   justify-content: flex-start;
   top: 48px;
-  left: 240px;
+  left: 250px;
   right: 280px;
   height: 36px;
   padding: 10px 10px;
