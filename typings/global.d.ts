@@ -21,9 +21,14 @@ interface logicConfig {
   config: object
 }
 
+interface processConfig {
+  nodes: object
+}
+
 interface Window {
   pageConfig: pageConfig,
-  logicConfig: logicConfig
+  logicConfig: logicConfig,
+  processConfig: processConfig
 }
 
 declare module 'antd' {
