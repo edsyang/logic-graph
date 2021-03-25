@@ -19,8 +19,11 @@ const { Item, Group } = Toolbar;
 const Tools = () => {
   const [isDisabled, setDisable] = React.useState(true);
   const [isActive, setActive] = React.useState(true);
+  const respondTools = (e: any) => {
+    console.log(e);
+  };
   return (
-    <Toolbar onClick={(e: any) => { console.log(e); }} extra={<span>Extra</span>}>
+    <Toolbar onClick={(e: any) => respondTools(e)} extra={<span>Extra</span>}>
       <Group>
         <Item name="zoomIn" tooltip="Zoom In (Cmd +)" icon={<ZoomInOutlined />} />
         <Item name="zoomOut" tooltip="Zoom Out (Cmd -)" icon={<ZoomOutOutlined />} />
