@@ -17,12 +17,32 @@ const baseConfig = {
     rules: [
       { test: /\.(js|jsx)$/, use: ['babel-loader'] },
       { test: /\.(ts|tsx)$/, use: ['babel-loader', 'ts-loader'] }, 
-      { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] }, 
+      { 
+        test: /\.less$/, 
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader'
+        }, {
+          loader: 'less-loader',
+          // fix issue: https://github.com/ant-design/ant-motion/issues/44
+          options: {
+            lessOptions: {
+              modifyVars: {
+                'primary-color': '#1DA57A',
+                'link-color': '#1DA57A',
+                'border-radius-base': '2px',
+              },
+              javascriptEnabled: true,
+            },
+          },
+        }] 
+      }, 
       { test: /\.css$/, use: ['style-loader', 'css-loader'] }
     ]
   },
   externals: {
-    '@antv/g6': 'var window.G6'
+    '@antv/x6': 'var window.X6'
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.less', '.css']
