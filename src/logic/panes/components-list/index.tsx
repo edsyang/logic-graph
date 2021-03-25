@@ -7,7 +7,7 @@ const ComponentsList = () => {
 
   debugger;
   const nodeItems = nodeData.map((item: any) => {
-    const { nodeName, props } = item;
+    const { nodeName, props, icon } = item;
     // eslint-disable-next-line react/prop-types
     const { name } = props;
 
@@ -25,9 +25,9 @@ const ComponentsList = () => {
             data-shape={nodeName}
             data-label={name}
             data-props={props}
-            // data-size={sizes[item.nodeName]}
+            // data-size={sizes[nodeName]}
           >
-            <i className={`iconfont ${item.icon}`} />
+            <i className={`iconfont ${icon}`} />
           </div>
           <div className="component-name">
             <span className="component-name-detail">{name}</span>
