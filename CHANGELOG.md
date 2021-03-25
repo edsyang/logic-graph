@@ -25,3 +25,7 @@ init project basic-ui
 ### 2021.3.20
 
 test components pane & fix component style & add fold function
+
+### 2021.3.25
+
+add tools pane
