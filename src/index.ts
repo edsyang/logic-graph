@@ -7,7 +7,6 @@ document.body.appendChild(container);
 container.id = 'logic-graph';
 
 const initGraph = () => {
-  debugger;
   ReactDOM.render(React.createElement(LogicUi, {}), container);
 };
 
