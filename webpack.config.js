@@ -42,7 +42,7 @@ const baseConfig = {
     ]
   },
   externals: {
-    '@antv/x6': 'var window.X6'
+    // '@antv/x6': 'var window.X6'
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.less', '.css']
